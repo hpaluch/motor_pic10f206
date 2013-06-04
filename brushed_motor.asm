@@ -2,7 +2,7 @@
 ; Speed can be adjusted using Up/Down push buttons
 
 ; defaults
-    CONSTANT DEF_DUTY = .64 ; default Duty ratio, 128 = 50%
+    CONSTANT DEF_DUTY = .200 ; default Duty ratio, 128 = 50%
 
 
     LIST P=PIC10F206
@@ -61,7 +61,7 @@ START
 MY_LOOP
     CLRF cDuty
 wOff
-; wait for 512us
+; wait for 128us
     MOVLW .32
     MOVWF c512us
 w512a
@@ -78,13 +78,14 @@ w512a
     MOVF sGPIO,w
     MOVWF GPIO
 wOn
-; wait for 512us
+; wait for 128us
     MOVLW .32
     MOVWF c512us
 w512b
     NOP
     DECFSZ c512us,f
     GOTO w512b
+; wOn
     INCFSZ cDuty,f  ; wait on Duty till cDuty overflows...
     GOTO wOn
 ; turn duty inactive again
@@ -98,6 +99,7 @@ w512b
 ; Possible Down Key (vDuty increases)
     INCFSZ vDuty,w ; just test vDuty +1
     CALL ProcessDownKey
+
     GOTO MY_LOOP                          ; loop forever
 
     END
