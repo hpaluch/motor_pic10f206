@@ -62,7 +62,7 @@ MY_LOOP
     CLRF cDuty
 wOff
 ; wait for 512us
-    MOVLW .128
+    MOVLW .32
     MOVWF c512us
 w512a
     NOP
@@ -79,7 +79,7 @@ w512a
     MOVWF GPIO
 wOn
 ; wait for 512us
-    MOVLW .128
+    MOVLW .32
     MOVWF c512us
 w512b
     NOP
