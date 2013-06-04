@@ -30,6 +30,17 @@ RCCAL   CODE    0x1FF           ; processor reset vector
 RES_VECT  CODE    0x0000            ; processor reset vector
     MOVWF   OSCCAL
     GOTO    START                   ; go to beginning of program
+; CALLS must be in Page 0
+ProcessUpKey
+    BTFSS GPIO,nUp
+    DECF vDuty,f ; now realy decrement vDuty
+    RETLW 0
+
+ProcessDownKey
+    BTFSS GPIO,nDown
+    INCF vDuty,f ; now realy decrement vDuty
+    RETLW 0
+
 
 MAIN_PROG CODE                      ; let linker place main program
 START
@@ -51,8 +62,10 @@ MY_LOOP
     CLRF cDuty
 wOff
 ; wait for 512us
-    CLRF c512us
+    MOVLW .128
+    MOVWF c512us
 w512a
+    NOP
     DECFSZ c512us,f
     GOTO w512a
     INCF cDuty,f
@@ -66,8 +79,10 @@ w512a
     MOVWF GPIO
 wOn
 ; wait for 512us
-    CLRF c512us
+    MOVLW .128
+    MOVWF c512us
 w512b
+    NOP
     DECFSZ c512us,f
     GOTO w512b
     INCFSZ cDuty,f  ; wait on Duty till cDuty overflows...
@@ -79,16 +94,10 @@ w512b
 ; check keys/ajdust vDuty
 ; Possible Up Key (vDuty decreases)
     DECFSZ vDuty,w ; just test vDuty -1 (in w)
-    GOTO testDown
-    BTFSS GPIO,nUp
-    DECF vDuty,f ; now realy decrement vDuty
+    CALL ProcessUpKey
 ; Possible Down Key (vDuty increases)
-testDown
     INCFSZ vDuty,w ; just test vDuty +1
-    GOTO keysEnd
-    BTFSS GPIO,nDown
-    INCF vDuty,f ; now realy decrement vDuty
-keysEnd
+    CALL ProcessDownKey
     GOTO MY_LOOP                          ; loop forever
 
     END
