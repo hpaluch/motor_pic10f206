@@ -1,5 +1,5 @@
 Schematics for PIC10F206 project:
-  - flashing LEDs and two tone sound
+  - Driving 5V DC Brushed motor using PIC10F206
 
 Schematics has been drawn in
  http://www.expresspcb.com/ExpressPCBHtm/Download.htm
