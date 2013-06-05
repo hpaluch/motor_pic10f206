@@ -7,6 +7,9 @@
 
 ; defaults
     CONSTANT DEF_DUTY = .200 ; default Duty ratio, 128 = 50%
+                             ; smaller value => more power,
+                             ; greater value => less power
+                             ; allowed values 1 to 255
 
 
     LIST P=PIC10F206
@@ -23,7 +26,7 @@
 MY_DATA UDATA
 sGPIO   RES 1
 vDuty   RES 1   ; Duty ratio, 128 = 50%
-c512us  RES 1   ; counter for delay 512us
+cWaitPWM RES 1   ; counter for delay in WaitPWM
 cDuty   RES 1   ; current duty counter
 
 ;***** RC CALIBRATION
@@ -34,7 +37,7 @@ RCCAL   CODE    0x1FF           ; processor reset vector
 RES_VECT  CODE    0x0000            ; processor reset vector
     MOVWF   OSCCAL
     GOTO    START                   ; go to beginning of program
-; CALLS must be in Page 0
+;****  CALLS must be in Page 0
 ProcessUpKey
     BTFSS GPIO,nUp
     DECF vDuty,f ; now realy decrement vDuty
@@ -45,6 +48,15 @@ ProcessDownKey
     INCF vDuty,f ; now realy decrement vDuty
     RETLW 0
 
+; Wait about 124uS
+WaitPWM
+    MOVLW .29
+    MOVWF cWaitPWM
+w1
+    NOP
+    DECFSZ cWaitPWM,f
+    GOTO w1
+    RETLW 0
 
 MAIN_PROG CODE                      ; let linker place main program
 START
@@ -56,22 +68,23 @@ START
     OPTION
     MOVLW ~(1<<CMPON)
     MOVWF CMCON0           ; Turn Off Comparator to enable GP1 & GP0
-    MOVLW ~(1<<TRISIO2 )  ; GP2 OUTPUT, other are Inputs
-    TRIS GPIO
+
     MOVLW ~0             ; all outputs inacitve (LOG1)
     MOVWF sGPIO
     MOVWF GPIO ; Motor Off
+
+    MOVLW ~(1<<TRISIO2 )  ; GP2 OUTPUT, other are Inputs
+    TRIS GPIO
+
+    MOVF sGPIO,w
+    MOVWF GPIO
+
 ; main motor drive loop
 MY_LOOP
     CLRF cDuty
 wOff
 ; wait for 128us
-    MOVLW .32
-    MOVWF c512us
-w512a
-    NOP
-    DECFSZ c512us,f
-    GOTO w512a
+    CALL WaitPWM
     INCF cDuty,f
     MOVF cDuty,w
     XORWF vDuty,w
@@ -83,12 +96,7 @@ w512a
     MOVWF GPIO
 wOn
 ; wait for 128us
-    MOVLW .32
-    MOVWF c512us
-w512b
-    NOP
-    DECFSZ c512us,f
-    GOTO w512b
+    CALL WaitPWM
 ; wOn
     INCFSZ cDuty,f  ; wait on Duty till cDuty overflows...
     GOTO wOn
