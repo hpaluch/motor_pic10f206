@@ -55,6 +55,10 @@
       <MPASMWIN-AS>
       </MPASMWIN-AS>
       <MPASMWIN-LD>
+        <property key="cod-file" value="false"/>
+        <property key="extra-lib-directories" value=""/>
+        <property key="hex-output-format" value="INHX32"/>
+        <property key="map-file" value="build/link.map"/>
       </MPASMWIN-LD>
       <PICkit3PlatformTool>
       </PICkit3PlatformTool>
