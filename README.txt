@@ -22,3 +22,10 @@ Links:
     http://www.microchipdirect.com/productsearch.aspx?keywords=DM163045
 * MPLAB X IDE
     http://www.microchip.com/pagehandler/en-us/family/mplabx/
+
+Other Links:
+
+* The MOSFET - very good intro (how to drive LOAD)
+    http://www.talkingelectronics.com/projects/MOSFET/MOSFET.html
+* Gooligum PIC tutorials - intro to baseline PIC & MPASM
+    http://www.gooligum.com.au/tutorials.html

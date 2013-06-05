@@ -56,8 +56,8 @@
       </MPASMWIN-AS>
       <MPASMWIN-LD>
       </MPASMWIN-LD>
-      <Simulator>
-      </Simulator>
+      <PICkit3PlatformTool>
+      </PICkit3PlatformTool>
       <mpasmsuite>
       </mpasmsuite>
     </conf>
