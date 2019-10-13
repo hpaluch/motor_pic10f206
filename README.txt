@@ -12,7 +12,7 @@ made by http://www.microchip.com
 with PicKit 3 programmer (included in PICDEM). All used parts
 are included in that kit.
 
-  Tested in MPLAB X IDE v1.80
+  Tested in MPLAB X IDE v2.35
 
 Links:
 

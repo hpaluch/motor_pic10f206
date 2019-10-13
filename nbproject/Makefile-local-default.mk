@@ -15,23 +15,23 @@
 # $ makeMP_CC="/opt/microchip/mplabc30/v3.30c/bin/pic30-gcc" ...  
 #
 SHELL=cmd.exe
-PATH_TO_IDE_BIN=C:/MPLABX/mplab_ide/mplab_ide/modules/../../bin/
+PATH_TO_IDE_BIN=C:/Program Files/Microchip/MPLABX/mplab_ide/mplab_ide/modules/../../bin/
 # Adding MPLAB X bin directory to path.
-PATH:=C:/MPLABX/mplab_ide/mplab_ide/modules/../../bin/:$(PATH)
+PATH:=C:/Program Files/Microchip/MPLABX/mplab_ide/mplab_ide/modules/../../bin/:$(PATH)
 # Path to java used to run MPLAB X when this makefile was created
-MP_JAVA_PATH="C:\MPLABX\sys\java\jre1.7.0_17/bin/"
+MP_JAVA_PATH="C:\Program Files\Microchip\MPLABX\sys\java\jre1.7.0_67/bin/"
 OS_CURRENT="$(shell uname -s)"
 # MP_CC is not defined
 # MP_CPPC is not defined
 # MP_BC is not defined
-MP_AS="C:\MPLABX\mpasmx\mpasmx.exe"
-MP_LD="C:\MPLABX\mpasmx\mplink.exe"
-MP_AR="C:\MPLABX\mpasmx\mplib.exe"
-DEP_GEN=${MP_JAVA_PATH}java -jar "C:/MPLABX/mplab_ide/mplab_ide/modules/../../bin/extractobjectdependencies.jar" 
+MP_AS="C:\Program Files\Microchip\MPLABX\mpasmx\mpasmx.exe"
+MP_LD="C:\Program Files\Microchip\MPLABX\mpasmx\mplink.exe"
+MP_AR="C:\Program Files\Microchip\MPLABX\mpasmx\mplib.exe"
+DEP_GEN=${MP_JAVA_PATH}java -jar "C:/Program Files/Microchip/MPLABX/mplab_ide/mplab_ide/modules/../../bin/extractobjectdependencies.jar"
 # MP_CC_DIR is not defined
 # MP_CPPC_DIR is not defined
 # MP_BC_DIR is not defined
-MP_AS_DIR="C:\MPLABX\mpasmx"
-MP_LD_DIR="C:\MPLABX\mpasmx"
-MP_AR_DIR="C:\MPLABX\mpasmx"
+MP_AS_DIR="C:\Program Files\Microchip\MPLABX\mpasmx"
+MP_LD_DIR="C:\Program Files\Microchip\MPLABX\mpasmx"
+MP_AR_DIR="C:\Program Files\Microchip\MPLABX\mpasmx"
 # MP_BC_DIR is not defined

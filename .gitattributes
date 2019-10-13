@@ -1,5 +1,11 @@
 # .gitattributes
+
+# always use Unix LF
 .gitattributes eol=lf
 Makefile text eol=lf
+*.mk text eol=lf
+*.bash text eol=lf
+
+# binary - do not touch
 *.PNG binary
 *.sch binary

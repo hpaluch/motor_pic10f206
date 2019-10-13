@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/motor10f206.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=motor10f206.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=motor10f206.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/motor_pic10f206.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=motor_pic10f206.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=motorpic10f206/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/motor10f206.x/bin
+makeDirectory ${TMPDIR}/motorpic10f206/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/motor10f206.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/motorpic10f206.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/motor10f206.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/motorpic10f206.tar *
 checkReturnCode
 
 # Cleanup

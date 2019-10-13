@@ -38,8 +38,11 @@
           <linkerLibItems>
           </linkerLibItems>
         </linkerTool>
+        <archiverTool>
+        </archiverTool>
         <loading>
           <useAlternateLoadableFile>false</useAlternateLoadableFile>
+          <parseOnProdLoad>false</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
       </compileType>
@@ -52,18 +55,12 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
-      <MPASMWIN-AS>
-      </MPASMWIN-AS>
       <MPASMWIN-LD>
         <property key="cod-file" value="false"/>
         <property key="extra-lib-directories" value=""/>
         <property key="hex-output-format" value="INHX32"/>
         <property key="map-file" value="build/link.map"/>
       </MPASMWIN-LD>
-      <PICkit3PlatformTool>
-      </PICkit3PlatformTool>
-      <mpasmsuite>
-      </mpasmsuite>
     </conf>
   </confs>
 </configurationDescriptor>

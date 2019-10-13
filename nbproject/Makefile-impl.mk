@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=motor10f206.X
+PROJECTNAME=motor_pic10f206
 
 # Active Configuration
 DEFAULTCONF=default
