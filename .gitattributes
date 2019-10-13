@@ -1,0 +1,5 @@
+# .gitattributes
+.gitattributes eol=lf
+Makefile text eol=lf
+*.PNG binary
+*.sch binary
